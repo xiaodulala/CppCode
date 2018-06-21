@@ -1,0 +1,547 @@
+bash的基础特性2
+
+命令别名 alias
+	通过alias管理别名
+	1.alias 显示当前shell进程所有可用命令别名
+	2.alias name='valie' 定义别名name 相当于执行value
+	注意  在命令行定义的别名  仅对当前shell进程有效，如果想永久有效  要定义在配置文件中
+
+	仅对当前用户有效  ~/.bashrc
+	对所有用户有效  /etc/bashrc
+
+	编辑配置文件后不会立即有效  需要使用source .baserc  或者从新启动shell，因为重新启动会自动读取配置文件
+
+	撤销别名  unalias
+
+
+glob(globbing)
+	bash 中用于事先文件名通配
+	通配符 * ? []
+	*  任意长度的任意字符 a*b
+	?  任意单个字符 a?b a??b  
+	[] 明确指明匹配范围内的任意单个字符  [abc] [0-9] [a-z]不区分字符大小写  [A-Z]仅匹配大写字母
+	[^] 匹配指定范围之外的任意单个字符  [^A-Z] 
+	
+	专用字符集合表示法
+		[:digit:] 任何数字  相当于0-9  注意不包含外面的括号  [[:digit:]]
+		[:lower:] 任意小写字母
+		[:upper:] 任何大写字母
+		[:alpha:] 任意大小写字母
+		[:alnum:] 任意数字或者字母
+		[:space:] 所有空格
+		[:punct:] 所有标点符号
+练习
+1.显示/var目录下所有以l开头  以一个小写字母结尾 且中间出现至少一位数字的文件或目录
+ls -d /var/l*[0-9]*[[:lower:]]
+
+2.显示etc目录下以任意一位数字开头 且以非数字结尾的文件或目录
+ls -d /etc/[[:digit:]]*[^[:digit:]]
+
+3.显示etc目录下 以非字母开头，后面跟了一个字母及其他任意长度 任意字符的文件或目录
+ls /etc/[^[:alpha:]][[:aplha:]]*
+
+4.复制/etc目录下 所有以m开头 以非数字结尾的文件或目录至 /tmp/mageedu目录中
+cp -r /etc/m*[^[:digit:]] /tmp/mageedu
+
+5.复制/etc目录下 所有以.d结尾的文件或目录至/tmp/mageedu目录中
+cp -a /etc/*.d /tmp/mageedu
+6.复制/etc目录下 所有以.conf结尾 且以mnrp开头的文件或目录至上面目录中
+
+
+
+bash的快捷键
+	ctrl+l: 相当于clear 清屏
+	ctrl+a: 光标直接跳至命令首部 命令开始出
+	ctra+e: 跳转至命令结尾处
+	cral+c: 取消命令执行
+	ctrl+u: 删除命令行首至光标处的所有内容
+	ctrl+k: 删除光标所在处到命令行尾的所有内容
+
+
+bash的IO重定向及管道
+	打开的文件都有一个fd  file description 文件描述符
+	标准输入 keyboard 0
+	标准输出 monitor  1
+	标准错误输出  monitor  2   
+
+	I/O重定向：改变标准位置
+	
+	输出重定向： command > new_pos  或者 >> new_pos
+		>:覆盖重定向  目标文件中的原有内容会被清楚
+		>>:追加重定向 目标文件中的内容会保留，新内容会追加至目标文件尾部。
+	# set -C  禁止对已有文件进行覆盖重定向
+	# set +C  开启覆盖重定向
+	强制覆盖重定向  >|
+
+	2> 覆盖重定向错误出书数据流
+	2>>  追加重定向错误输出流
+
+
+	标准输出和错误输出各自定向至不通位置
+		command > path/to/file.out  2> /path/to/error.out
+		这样两个文件都会被创建出来
+		
+	合并标准输出和错误输出为同一个数据流进行重定向
+	&> 
+	&>> 追加重定向
+	command  >|>> /path/to/file.out  2>|2>> &1   如果错误了，就就把错误数据流转到前一个数据流  
+
+
+
+	输入重定向 <
+		tr命令  转换或删除字符
+		 tr [option] [字符1] [字符2]
+
+		 [root@duyong prim]# tr abc ABC
+			abcdef
+			ABCdef
+
+		tr命令默认是从标准输入读取数据
+			tr 'a-z' 'A-Z' < /etc/fstab
+
+		tr -d abc  删除字符  
+
+	
+	管道：
+		command1 | command2 | command3 |[....]
+		注意：最后一个命令会在当前shell进程的子shell进程中执行。
+
+		tee命令 从标准输入得到数据  输出到标准输出 和文件中  一路输入 两份输出 tee是覆盖输出的
+			tee option file
+	
+	文本操作工具
+	wc cut sort uniq
+	wc命令： word count  统计单词
+		wc -l file  统计行数
+		wc -w file  统计单词书
+		wc -c file  charcacters  字节数
+	
+	cut命令 
+		cut option file
+		-d   -d: -d' '   指明分隔符
+		-f #    -f 1 -f 1,7    -f 1-7 
+			#：第#个字段
+			#,#  离散的多个字段
+			#-# 连读的多个字段
+			混合使用 1-3,7
+		--output-delimiters=string  指明输出时候的分隔符
+	
+	sort 
+		sort option file
+
+		-f 忽略字符大小写
+		-r 逆序排序
+		-t 字段分隔符
+		-k 以指定字段为标准排序
+		-n 以数值大小排序 默认以字符排序
+		-u 去重 uniq 排序后去重
+			sort -t: -k3 -n /etc/passwd
+	uniq
+		uniq option file
+		注意 连续且完全相同方位重复
+		-c 显示每行重复出现的次数
+		-d 仅显示重复过的行
+		-u 仅显示不重复的行
+
+练习
+	1.将/etc/passwd 文件中的前五行内容转换成大写后保存至 /tmp/passwd.out文件中
+	head -n 5 /etc/passwd | tr 'a-z' 'A-Z' > /tmp/passwd.out
+	2.将登陆至当前系统上用户信息中的前三位的信息转换为大写后保存至 /tmp/who.out中
+	 who | tail -n 3 | tr 'a-z' 'A-Z' > /tmp/who.out
+	3. 取出/etc/passwd 文件的第6至第10行的各自的第一个字段 并将这些信息按第三个字段的数值大小进行排序 最后仅显示各自的第一个字段
+
+
+
+用户和用户组
+	资源分派
+	
+	linux用户
+		管理员 root 0
+		普通用户 1-65535 
+			系统用户 1-499 对守护进程获取资源进行权限分配   1-999
+			登录用户 500+  1000+
+	linux组
+		管理员 root 0
+		普通组
+			系统组 1-499 1-999
+			普通组 500+  1000+
+	linux 安全上下文
+		运行中的程序 进程  process  以进程发起者的身份运行
+		进程所能访问的所有资源的权限 取决与进程的发起者
+	linux组的类别
+		用户的基本组 主组
+			组名同用户名 且包含一个用户  私有组
+		用户的附加组  额外组
+	linux用户和组相关的配置文件
+		/etc/passwd  用户及其属性信息 
+		/etc/group 组及其属性信息
+		/etc/shadow 用户密码及其相关属性
+		/etc/gshadow 组密码及其相关属性
+	
+
+	/etc/passwd 文件
+		用户名:密码占位符:uid:gid:gecos:主目录:默认shell
+	
+	/etc/group 
+		group_name:passwd:GID:user_list
+		组名：组密码：gid：以当前组为附加组的用户列表
+	/etc/shadow 密码文件
+		用户名：加密了的密码：
+			加密机制：单向加密  提取数据指纹（唯一特征码）
+			md5 message digest    128bits
+			sha1 secure hash algorithm  160位输出
+			sha224 		224位定长输出  256 384 512
+
+			雪崩效应  初始条件的微信改变 将会引起结果的巨大改变
+
+			定长输出
+
+			tom:$6$ECZdLbeL$9GRVxlO.PDFJ6E6hAoT25lq47Gh4noBgfrPvmn5MYKXk0erw9q1TXavxBfP77ZoshWuTNJoDpLaHa6YA/DPba0:17475:0:99999:7:::
+			6是加密版本
+			ECZdLbeL 这个是密码杂志
+		密码的复杂性策略
+			1.使用数组大写字母 小写字母 及特殊字符中至少三种  暴力破解 次数限制
+			2.足够长
+			3.使用随机密码
+			4.定期更换
+	
+
+	
+	用户和组相关命令
+		用户创建 useradd
+			useradd [option] LOGIN
+				-u   [uid_min-uid_max] /etc/login.defs
+				-g   gname  指定用户基本组可用组名或者gid  组名必须存在
+				-c  用户的注释信息
+				-d |--homeHOME_DIR  指明用户家目录
+				-s |--shellSHELL  指定用户默认shell
+				-G GROUP1..GROUPN  为用户指定附加组
+				-D 跟上面任何选项  更改添加用户时候的默认值。  默认值设定文件  /etc/default/useradd 文件中
+				-r 创建系统用户
+		组创建 groupadd
+			-g gid 指明gid号 界定同用户创建
+			-r 创建系统组
+
+		查看用户相关的id信息 id
+			id+user
+			-u -g -G
+			-n 与上面名称结合 显示名称
+		切换用户  su  switch user
+
+			切换用户的方式
+				su username  非登录式切换  不会读取目标用户的配置文件
+				su - username 登录时切换   相反   也叫完全切换
+
+		用户属性更改 usermod
+			-u uid 新uid
+			-g gid 新gid
+			-G g1 g2。。 新的附加组 原来附加组会被覆盖。若想保留原有，则要同时使用-a选项 表示追加。
+			-s shell  新shell
+			-c  comment  新的用户信息
+			-d  home  新的家目录
+			-L  lock指定用户
+			-U  解锁指定用户
+			
+
+
+bash基础特性
+	命令行展开 ~ {}
+	命令行别名 alias/unalias
+	命令行历史 history
+	命令和路径补全 $PATH
+	glob: * ? [] [^]
+	快捷键 ctrl+{a,e,l,c,u,k}
+	命令hash hash
+
+bash的基础特性3
+	1.提供了编程环境
+		程序编程风格
+			过程式  已指令为中心 数据服务于指令
+			对象式	已数据为中心，指令服务与数据
+	shell程序  提供了编程能力，解释执行
+	
+	程序的执行方式
+
+
+
+shell脚本  文本文件
+	#!/bin/bash
+
+	运行脚本：给予执行权限 根据路径指定文件执行
+	直接运行解释器 将脚本作为解释器程序的参数运行 bash first.sh
+
+
+	变量: 命名的内存空间
+	bash 弱类型 把所有要存储的数据全部当字符进行  不支持浮点数
+
+
+
+
+
+grep
+	grep  文本过滤（模式 pattern）工具
+		grep egrep fgrep
+	sed: stream editor 文本编辑工具  过滤不明智
+	awk: linux上的实现 gawk   文本报告生成器
+
+	grep: Global search REgular expression and Print out the line
+	 作用  文本搜索工具 根据用户指定的模式对目标文件左航进行匹配检查，打印匹配到的行
+	 模式：由正则表达式字符及基本的文本字符编写的过滤条件。
+	 REGEXP:由一类特殊字符及文本字符，所编写的模式，其中有些字符不表示字符字面意义 而表示控制或通配的功能。
+
+	正则表达式分两类
+		基本的正则表达式 BRE  
+		扩展的正则表达式 ERE
+			grep -E egrep
+	正则表达式引擎
+		grep [OPTIONS] PATTERN [FILE...]
+			
+			选项
+			--color=auto  加颜色
+			-v 反向选择 匹配到的行不显示
+			-i 匹配时忽略字符大小写
+			-o 仅显示匹配到的字符串
+			-q 静默模式 不输出任何信息  用$?查看
+			-A # : after 后#行
+			-B # : before 前#行
+			-C # : context 前后各#行
+			-E:支持使用扩展的正则表达式
+	基本正则表达式元字符
+		字符匹配
+			.	匹配任意单个字符
+			[]	匹配指定范围内的任意单个字符
+			[^]	匹配指定范围之外的任意单个字符
+				[:digit:] [:lower:] [:upper:] [:alpha:] [:alnum:] [:punct:] [:space:]
+		匹配次数:用在指定次数的字符后面，用于指定前面的字符要出现的次数
+			*	匹配前面的字符任意次 0次1次n次
+				x*y  x出现多次
+				abxy 
+				xay  也可以 只匹配到y
+				xxxxxxxy  全部匹配到  默认情况下 正则表达式工作与贪婪模式
+			.*:	结合起来表示任意长度的任意字符
+			\?:	匹配前面的字符0次或者1次  即前面的字符可有可无。
+			\+:	匹配前面的字符至少一次。
+			\{m\}	精确匹配前面字符m次
+			\{m,n\} 匹配前面的字符至少m次 至多n次
+			\{0,n\} 至多n次 最多n次
+			\{m,\}	至少m次 多了不限
+			
+		位置锚定
+			^ 	行首锚定 用于模式最左侧
+			$	行尾锚定 用户模式最右侧
+			^PATTER$用模式匹配整行
+			^$	匹配空行
+			^[[:space:]]*$ 匹配空白字符行
+			\<或\b	词首锚定 用于单词模式的左侧
+			\>或\b  词尾锚定 用于单词模式的右侧
+			\<PATTER\> 单词锚定
+		分组符号
+		\(\)		将一个或多个字符捆绑在一起当做一个整体进行处理
+			\(xy\)*ab 匹配xy多次
+		
+			后向引用：引用前面的分组括号中的模式所匹配到的字符 （而非模式本身）
+			原理：分组括号中的模式匹配到的内容会被正则表达式引擎记录与内部的变量中 这些变量的命名方式为\1 \2 \3
+			\1 从左侧器 第一个左括号一级与之匹配右括号之间的模式所匹配到的字符
+
+
+
+
+egrep  及扩展正则表达式
+	egrep = grep -E
+
+	扩展正则表达式的元字符
+		字符匹配：
+			.
+			[]
+			[^]
+		次数匹配 都不用转义
+			*  任意次
+			？ 0次或1次
+			+ 1次或多次
+			{m} 匹配m次
+			{m,n} 至多m次 至少n次
+		锚定：
+			^
+			$
+			\< \b
+			\> \b
+		分组后向引用
+			（）
+			后向引用 \1 \2
+		或者	
+			|   C|cat   C或cat  (C|c)at 
+
+		
+	练习
+		显示当前系统 root centos 或user1用户的默认shell和uid
+		grep -E "^(root|user1)\>" /etc/passwd | cut -d: -f1-3,7
+		找出/etc/rc.d/init.d/function文件 中某单词后面跟一个小括号的行
+		grep -E -o "^[_[:alpha:]]+\(\)" /etc/rc.d/init.d/functions	
+		使用echo命令输出一个路径 使用egrep取出其基名 basename    dirname
+		echo "/etc/passwd" | grep -E "\<[^/]+[/]?$" | cut -d"/" -f3
+		找出ifconfig命令结果中1-255之间的数值
+
+		找出ifconfig命令结果中的ip地址
+
+
+fgrep  
+	fgrep "r..t" /etc/passwd 
+	就找r..t  不使用正则引擎
+	速度快。
+
+
+
+
+	
+bash中的变量的种类
+	本地变量  生效范围为当前shell进程 对当前shell之外的其他shell进程 包括当前shell的子shell进程均无效
+	环境变量  生效范围是当前shell进程及子进程		
+	局部变量	生效范围是当前shell进程中某代码片段 函数上下文
+	位置变量	$1,$2,$3 ... l来表示  用于让脚本在脚本代码中传递参数 $0是命令本身
+	特殊变量  $? $0
+
+	本地变量
+		赋值 name='value'
+			可以使用引用:
+				value:
+					可以是直接字符串
+					也可以是变量引用.
+					命令引用  可以把一个命令的执行结果赋值给当前变量  name=`command`  name=$(command);
+		变量引用: ${name} $name  
+			""弱引用 其中的变量引用会替换成变量值.
+			'' 弱引用 其中变量引用不会被替换成变量值 保持原字符串.
+		显示已经定义的变量
+			set
+		销毁变量
+			unset
+		
+	环境变量
+		变量声明
+			export name=value
+			declare -x name=value
+		变量引用  同上
+		现实所有环境变量 
+			export
+			env		
+			printenv
+		撤销变量 unset name
+		
+		bash有许多内建的环境变量
+			PATH SHELL UID HISTSIZE HOME PWD OLD HISTFILE PS1
+	
+
+
+	只读变量  不能改值 不能销毁 shell结束后销毁
+		readonly name
+		declare -r name 
+
+	位置变量
+		不需要手动赋值 在脚本代码中通过命令行传递给脚本的参数
+		$0 命令本身
+		$* 传递给脚本的所有参数  把所有参数当一个字符串
+		$@ 传递给脚本的所有参数  把所有参数各自当做一个字符串
+		$# 传递给脚本的参数的个数
+		
+
+		$ 1 2 3
+			shift[n] 换岗操作 
+		echo $1
+		shift
+		echo $1
+		shift  一脚踢一个
+	
+			
+
+
+		#!/bin/bash
+		linecount="$(wc -l $1 | cut -d' ' -f1)"
+		echo "$1 has $linecount lines"
+
+
+
+bash的配置文件
+	生效范围划分
+		全局配置
+			/etc/profile
+				/etc/profile.d/*.sh
+			/etc/bashrc
+		个人配置
+				~/.bash_profile
+				~/.bashrc
+	按照功能划分
+		profile  为交互式登录的shell提供配置
+			全局 /etc/profile  /etc/profile.d/*.sh
+			个人 ~/.bashrc_profile
+			功用  定义环境变量  运行命令或脚本
+		bashrc	 为非交互式登录的shell提供配置
+			全局 /etc/.bashrc
+			个人 ~/.bashrc
+			公用 定义命令的别名  定义本地变量
+	shell登录的类别
+		交互式登录  	直接通过中断输入账号密码登录   使用su - username 或者 su -l username
+		非交互式登录	su username  图形界面下打开的终端   直接脚本的			
+
+		交互式登录shell读取bash配置文件顺序
+			/etc/profile-->/etc/profile.d/*.sh----->~/.bash_profile---->~/.bashrc--->/etc/.bashrc
+		非交互式登录
+			~/.bashrc  /ect/.bashrc  /etc/profile.d/*.sh
+
+
+
+
+
+
+bash的算数运算
+	实现算数运算
+		let name=1+1(算数表达式)  需要变量接受
+		var=$[算数表达式] $(算数表达式) 有返回值 可直接输出.
+		var=$((算数表达式)) 同上
+		var = $(expr arg1 arg2 arg3...)   * \号等要转移  1是被加数 2是符号 3是加数
+		var = $[表达式]
+	bash内键的随机生成器 $RANDOM  
+
+	增强型复制
+		let cout++;
+		let cout--;
+
+	
+
+条件测试
+	判断某需求是否满足  需要由测试机制来实现
+	专用的测试表达式需要由测试命令辅助完成测试过程
+
+	测试命令：
+		test  表达式
+		[ 表达式 ]
+		[[ 表达式 ]]
+		表达式前后必须有空格 否则语法错误
+	
+	bash的测试类型
+		数值测试
+			-gt 是否大于
+			-ge 是否大于等于
+			-eq 是否等于
+			-ne 是否不等于
+			-lt 是否小于
+			-le 是否小于等于
+		字符串测试
+			==/=: 是否等于
+			> 是否大于
+			< 是否小于
+			!=是否不等于
+			=~ 左侧字符串是否能够被右侧的模式所匹配
+				此种表达式一般用于[[  ]]测试符号中
+			-z “str” 测试字符串是否为空 空为真 不空为假
+			-n “srt” 测试字符串是否不空 不空为真  空为假
+			
+			note：用于字符串比较式用到的操作数都应该加引号
+		文件测试
+			
+bash中如何自定义退出状态码
+	exit [n] 自定义退出状态码  脚本中一旦遇到exit命令 脚本会立即终止 
+
+
+
+
+
+
