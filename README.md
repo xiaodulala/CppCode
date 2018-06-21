@@ -1,2 +1,1 @@
 # CppCode
-c++
