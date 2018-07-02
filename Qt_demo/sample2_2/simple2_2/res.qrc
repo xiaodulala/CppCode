@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</file>
+        <file>images/copy_documents_duplicate_files_48px_1496_easyicon.net.png</file>
+        <file>images/cut_edit_48px_16040_easyicon.net.png</file>
+        <file>images/Document_File_48px_1072799_easyicon.net.png</file>
+        <file>images/empty_trash_32px_22712_easyicon.net.png</file>
+        <file>images/folder_open_32px_14055_easyicon.net.png</file>
+        <file>images/font_48px_29330_easyicon.net.png</file>
+        <file>images/italic_32px_526182_easyicon.net.png</file>
+        <file>images/Paste_48px_1118974_easyicon.net.png</file>
+        <file>images/Text_Bold_32px_530629_easyicon.net.png</file>
+        <file>images/Text_Underline_32px_530672_easyicon.net.png</file>
+    </qresource>
+</RCC>

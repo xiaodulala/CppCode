@@ -1,0 +1,93 @@
+2.1 可视化UI的设计
+	使用设计师设计页面，字体的格式和颜色的控制
+2.2 混合方式UI设计
+	创建一个MainWindow窗口 有主菜单 工具栏和状态栏 使用UI设计完成
+	在工具栏上增加字体选择SpinBox组件，在状态栏添加Label和ProcessBar组件 无法使用UI设计完成，使用代码手动编写
+	资源的使用和Actions的使用。
+
+3.1.1 Qt的核心特点
+	Qt本身不是一种编程语言，实质上是一个跨平台的c++开发类库。使用标准c++编写的类库
+	Qt对标准c++做了扩展 引入了一些新的概念，比如信号和槽 对象属性等。
+	Qt的元对象编译器Meta-Object Compiler MOC是一个预处理器。在源程序被编译前，先将这些Qt特性的程序转化为标准c++兼容形式。然后再由c++编译器进行编译。
+	这就是为什么在使用信号和槽的类里，需要添加一个Q_OBJECT宏的原因。只有添加了这个宏，moc预处理器才能对信号和槽的代码进行处理
+3.1.2 元对象系统
+	Qt的元对象系统提供了对象之间通信的信号和槽机制，运行时类信息和动态属性系统。
+	元对象系统由以下三个基础组成
+	QObject 类是所有使用元对象系统类的基类
+	在一个类的private部分 声明QObject宏 使得类可以使用元对象的特性 如动态属性 信号和槽
+	MOC元对象编译器
+	除了信号和槽以外，元对象还提供以下功能
+	QObject::metaObject()函数返回类关联的元对象 元对象类 QMetaObject包含了访问元对象的一些接口函数 如QMetaObject::className()函数可在运行时返回类的名称字符串
+	QObject *obj = new PushButton;
+	obj->metaObject()->classname() //返回QPushButton
+	
+	QMetaObject::newInstance() 函数创建一个类的新的实例
+	
+	QObject::inherits(const char* className)函数判断一个对象实例是不是名称为classname的类或QObjectde的子类的实例
+	QTimer *timer = new QTimer;
+	time->inherits("QTimer") //true
+	time->inherits("QObject") //true
+	time->inherits("QPushbuton") //false  不是QPushButton的子类
+	
+	QObject::tr()  QObject::trUtf8()函数可以翻译字符串
+	QOBject::setProperty() QObject::property() 函数用于通过属性名称动态设置和获取属性值
+	
+	对象的投射 Qobject_cast() 
+3.1.3 属性系统
+	Qt提供了一个QPROPERTY()宏可以定义属性，也是基于元对象系统实现的 在QOBject子类中 可以如下定义
+	Q_PROPERTY(
+		type name (READ getFunction[WRITE setFunction]|MEMBER memberName[(READ getFunction|WRITE setFunction)])
+		[RESET resetFunction]
+		[NOTIFY notifuSignal]
+		[REVISION int]
+		[DESIGNABLE bool]  
+		[SCRIPTABLE bool]
+		[STORED bool]
+		[USER bool]
+		[CONSTANT]
+		[FINAL]
+	)
+	read 指定一个读取属性值的函数
+	write 指定一个设置属性值的函数
+	member 指定一个成员变量和属性关联
+	reset 指定一个设置属性缺省值的函数
+	notify 用于设置一个信号 当属性值发生变化的时候发射此信号
+	
+	属性的使用
+		不管是否用read和write定义了接口函数，只要知道属性的名称，就可以通过QObject::property 读取属性值 通过QObject::setProperty 设置属性值
+	
+	动态属性
+		QObject::setProperty函数可以在运行为类定义新的属性，叫做动态属性，动态属性是针对类的实例定义的。也就是对象定义的，和类无关。
+	类的附加信息
+		Q_CLASSINFO 可以为类的元对象定义名称-值信息
+		class QMclass :public QOBject{
+			Q_OBJECT
+			Q_CLASSINFO("author","wanng")
+			Q_CLASSINFO("company","UPC")
+		}
+		可以通过元对象的函数来获取类的附加信息 classInfo(int) 获取某个附加信息
+		QMetaClassInfo QMetaObject::classInfo(int index)const
+		返回值 QMetaClassInfo 有name() 和value() 两个函数 可获得类附件信息的名称和值
+
+3.1.4 信号和槽
+	代码中体现
+
+3.1.5 元对象测试实例	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
