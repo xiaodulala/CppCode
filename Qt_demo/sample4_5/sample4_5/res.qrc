@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/Lighthouse.jpg</file>
+        <file>images/folder_open_32px_14055_easyicon.net.ico</file>
+    </qresource>
+</RCC>
