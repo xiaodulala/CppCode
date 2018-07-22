@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>878</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QToolBox" name="toolBox">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="listPage">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>255</width>
+          <height>218</height>
+         </rect>
+        </property>
+        <attribute name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/images/icos/list_48px_1170188_easyicon.net.png</normaloff>:/images/icos/list_48px_1170188_easyicon.net.png</iconset>
+        </attribute>
+        <attribute name="label">
+         <string>QListWidget操作</string>
+        </attribute>
+        <widget class="QToolButton" name="tBtnListClear">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>46</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>tBtnListClear</string>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+        </widget>
+        <widget class="QToolButton" name="tBtnListInsert">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>92</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>tBtnListInsert</string>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+        </widget>
+        <widget class="QToolButton" name="tBtnListDelete">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>186</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>tBtnListDelete</string>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+        </widget>
+        <widget class="QToolButton" name="tBtnListIni">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>1</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>tBtnListIni</string>
+         </property>
+         <property name="autoRepeatDelay">
+          <number>300</number>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+        </widget>
+        <widget class="QToolButton" name="tBtnListAppend">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>140</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>tBtnListAppend</string>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="treePage">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>255</width>
+          <height>227</height>
+         </rect>
+        </property>
+        <attribute name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/images/icos/tree_48px_27040_easyicon.net.png</normaloff>:/images/icos/tree_48px_27040_easyicon.net.png</iconset>
+        </attribute>
+        <attribute name="label">
+         <string>QTreeWidget操作</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tablePage">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>255</width>
+          <height>227</height>
+         </rect>
+        </property>
+        <attribute name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/images/icos/table_69.507128309572px_1158249_easyicon.net.png</normaloff>:/images/icos/table_69.507128309572px_1158249_easyicon.net.png</iconset>
+        </attribute>
+        <attribute name="label">
+         <string>QTableWidget操作</string>
+        </attribute>
+       </widget>
+      </widget>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="listTab">
+        <attribute name="title">
+         <string>QListWidget</string>
+        </attribute>
+        <widget class="QListWidget" name="listWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>140</y>
+           <width>561</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>New Item</string>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>New Item2</string>
+          </property>
+          <property name="checkState">
+           <enum>Unchecked</enum>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+        </widget>
+        <widget class="QWidget" name="widget" native="true">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>561</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string> 当前项变化</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit"/>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text">
+             <string>可编辑</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="widget_2" native="true">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>561</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QToolButton" name="tBtnSelectItem">
+            <property name="text">
+             <string>tBtnSelectItem</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QToolButton" name="tBtnSelAll">
+            <property name="text">
+             <string>tBtnSelAll</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QToolButton" name="tBtnSelNone">
+            <property name="text">
+             <string>tBtnSelNone</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QToolButton" name="tBtnSelInvs">
+            <property name="text">
+             <string>tBtnSelInvs</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="treeTab">
+        <attribute name="title">
+         <string>QTreeWidget</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tableTab">
+        <attribute name="title">
+         <string>QTableWidget</string>
+        </attribute>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>878</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actListIni"/>
+   <addaction name="actListClear"/>
+   <addaction name="actListInsert"/>
+   <addaction name="actListAppend"/>
+   <addaction name="actListDelete"/>
+   <addaction name="actSelPopMenu"/>
+   <addaction name="actQuit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actListIni">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/List_48px_1077373_easyicon.net.png</normaloff>:/images/icos/List_48px_1077373_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>初始化列表</string>
+   </property>
+   <property name="toolTip">
+    <string>初始化列表</string>
+   </property>
+   <property name="shortcut">
+    <string>Meta+I</string>
+   </property>
+  </action>
+  <action name="actListClear">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/delete_exit_remove_48px_3590_easyicon.net.png</normaloff>:/images/icos/delete_exit_remove_48px_3590_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>清除列表</string>
+   </property>
+   <property name="toolTip">
+    <string>清除列表</string>
+   </property>
+  </action>
+  <action name="actListInsert">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/insert_48px_1209027_easyicon.net.png</normaloff>:/images/icos/insert_48px_1209027_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>插入项</string>
+   </property>
+   <property name="toolTip">
+    <string>插入项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actListAppend">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/add_48px_520097_easyicon.net.png</normaloff>:/images/icos/add_48px_520097_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>添加项</string>
+   </property>
+   <property name="toolTip">
+    <string>添加项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actListDelete">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/delete_exit_remove_48px_3782_easyicon.net.png</normaloff>:/images/icos/delete_exit_remove_48px_3782_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>删除当前项</string>
+   </property>
+   <property name="toolTip">
+    <string>删除当前项</string>
+   </property>
+   <property name="shortcut">
+    <string>Backspace</string>
+   </property>
+  </action>
+  <action name="actSelAll">
+   <property name="text">
+    <string>全选</string>
+   </property>
+   <property name="toolTip">
+    <string>全选</string>
+   </property>
+  </action>
+  <action name="actSelNone">
+   <property name="text">
+    <string>全不选</string>
+   </property>
+   <property name="toolTip">
+    <string>全不选</string>
+   </property>
+  </action>
+  <action name="actSelInvs">
+   <property name="text">
+    <string>反选</string>
+   </property>
+   <property name="toolTip">
+    <string>反选</string>
+   </property>
+  </action>
+  <action name="actQuit">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</normaloff>:/images/icos/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>退出程序</string>
+   </property>
+   <property name="toolTip">
+    <string>退出程序</string>
+   </property>
+  </action>
+  <action name="actSelPopMenu">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/icos/items_48px_557450_easyicon.net.png</normaloff>:/images/icos/items_48px_557450_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>项选择</string>
+   </property>
+   <property name="toolTip">
+    <string>项选择</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actSelPopMenu</sender>
+   <signal>triggered()</signal>
+   <receiver>actSelInvs</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>405</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

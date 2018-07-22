@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>icos/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</file>
+        <file>icos/add_48px_520097_easyicon.net.png</file>
+        <file>icos/copy_documents_duplicate_files_48px_1496_easyicon.net.png</file>
+        <file>icos/cut_edit_48px_16040_easyicon.net.png</file>
+        <file>icos/delete_exit_remove_48px_3590_easyicon.net.png</file>
+        <file>icos/delete_exit_remove_48px_3782_easyicon.net.png</file>
+        <file>icos/Document_File_48px_1072799_easyicon.net.png</file>
+        <file>icos/empty_trash_32px_22712_easyicon.net.png</file>
+        <file>icos/folder_open_32px_14055_easyicon.net.png</file>
+        <file>icos/font_48px_29330_easyicon.net.png</file>
+        <file>icos/insert_48px_1209027_easyicon.net.png</file>
+        <file>icos/italic_32px_526182_easyicon.net.png</file>
+        <file>icos/items_48px_557450_easyicon.net.png</file>
+        <file>icos/List_48px_1077373_easyicon.net.png</file>
+        <file>icos/list_48px_1170188_easyicon.net.png</file>
+        <file>icos/Paste_48px_1118974_easyicon.net.png</file>
+        <file>icos/table_69.507128309572px_1158249_easyicon.net.png</file>
+        <file>icos/Text_Bold_32px_530629_easyicon.net.png</file>
+        <file>icos/Text_Underline_32px_530672_easyicon.net.png</file>
+        <file>icos/tree_48px_27040_easyicon.net.png</file>
+        <file>icos/point.png</file>
+    </qresource>
+</RCC>
