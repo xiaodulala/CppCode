@@ -151,7 +151,16 @@
 	8.QlistWidget的主要信号currentItemChanged()的功能 编写响应槽函数
 	9.为QlistWidget组件利用已设计的ACtions创建自定义快捷菜单	
 	
-	
+	使用到的类和函数	
+	QListWidget 
+		addItem
+		currentRow
+		insertItem
+		信号 currentRowChanged currentItemChanged currentTextChanged
+	QListWidgetItem
+		setText  setIcon setCheckState setFlag  setCheckState
+	QIcon	
+		addFile("资源路径")
 	
 	
 	
