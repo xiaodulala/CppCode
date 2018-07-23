@@ -1,0 +1,47 @@
+<RCC>
+    <qresource prefix="/imagesIcon">
+        <file>icons/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</file>
+        <file>icons/add_48px_520097_easyicon.net.png</file>
+        <file>icons/copy_documents_duplicate_files_48px_1496_easyicon.net.png</file>
+        <file>icons/cut_edit_48px_16040_easyicon.net.png</file>
+        <file>icons/delete_exit_remove_48px_3590_easyicon.net.png</file>
+        <file>icons/delete_exit_remove_48px_3782_easyicon.net.png</file>
+        <file>icons/document_file_48px_563728_easyicon.net.png</file>
+        <file>icons/Document_File_48px_1072799_easyicon.net.png</file>
+        <file>icons/empty_trash_32px_22712_easyicon.net.png</file>
+        <file>icons/folder_48px_42551_easyicon.net.png</file>
+        <file>icons/folder_open_32px_14055_easyicon.net.png</file>
+        <file>icons/font_48px_29330_easyicon.net.png</file>
+        <file>icons/gps_location_needle_push_pin_thumbtack_48px_166_easyicon.net.png</file>
+        <file>icons/Height_Window_48px_1177939_easyicon.net.png</file>
+        <file>icons/insert_48px_1209027_easyicon.net.png</file>
+        <file>icons/italic_32px_526182_easyicon.net.png</file>
+        <file>icons/items_48px_557450_easyicon.net.png</file>
+        <file>icons/List_48px_1077373_easyicon.net.png</file>
+        <file>icons/list_48px_1170188_easyicon.net.png</file>
+        <file>icons/magnification_48px_1155062_easyicon.net.png</file>
+        <file>icons/Magnifier_zoom_in_49.156626506024px_1198331_easyicon.net.png</file>
+        <file>icons/Magnifier_zoom_out_49.156626506024px_1198332_easyicon.net.png</file>
+        <file>icons/magnify_48.091254752852px_1190644_easyicon.net.png</file>
+        <file>icons/Paste_48px_1118974_easyicon.net.png</file>
+        <file>icons/point.png</file>
+        <file>icons/table_69.507128309572px_1158249_easyicon.net.png</file>
+        <file>icons/Text_Bold_32px_530629_easyicon.net.png</file>
+        <file>icons/Text_Underline_32px_530672_easyicon.net.png</file>
+        <file>icons/tool_node_editor_48px_1066386_easyicon.net.png</file>
+        <file>icons/tree_48px_27040_easyicon.net.png</file>
+        <file>icons/Width_Window_48px_1179015_easyicon.net.png</file>
+        <file>icons/Picture_48px_507712_easyicon.net.png</file>
+        <file>icons/Pictures_Picture_Folder_48px_515430_easyicon.net.png</file>
+    </qresource>
+    <qresource prefix="/imagesPic">
+        <file>pic/qqj_1366x768.jpg</file>
+        <file>pic/ry_1024x768.jpg</file>
+        <file>pic/sl_1280x800.jpg</file>
+        <file>pic/timg (1).jpeg</file>
+        <file>pic/timg (2).jpeg</file>
+        <file>pic/xje_1280x1024.jpg</file>
+        <file>pic/xmy_1280x800.jpg</file>
+        <file>pic/ymy_1280x1024.jpg</file>
+    </qresource>
+</RCC>
