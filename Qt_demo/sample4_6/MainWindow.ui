@@ -130,7 +130,7 @@
           <x>0</x>
           <y>0</y>
           <width>255</width>
-          <height>227</height>
+          <height>218</height>
          </rect>
         </property>
         <attribute name="icon">
@@ -147,7 +147,7 @@
           <x>0</x>
           <y>0</y>
           <width>255</width>
-          <height>227</height>
+          <height>218</height>
          </rect>
         </property>
         <attribute name="icon">
@@ -312,8 +312,6 @@
    <addaction name="actListInsert"/>
    <addaction name="actListAppend"/>
    <addaction name="actListDelete"/>
-   <addaction name="actSelPopMenu"/>
-   <addaction name="actQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actListIni">

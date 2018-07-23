@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //手动绑定按钮和Action
     setActionForButton();
+    createSelectionPopMenu();
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +33,29 @@ void MainWindow::setActionForButton()
     ui->tBtnSelInvs->setDefaultAction(ui->actSelInvs);
 
 }
+ void MainWindow::createSelectionPopMenu()
+ {
+     //创建下拉菜单
+     QMenu* menuSelection = new QMenu(this);
+     //给菜单的每个项关联action
+     menuSelection->addAction(ui->actSelAll);
+     menuSelection->addAction(ui->actSelNone);
+     menuSelection->addAction(ui->actSelInvs);
+     //listWidget上方的按钮设置下拉菜单
+     ui->tBtnSelectItem->setPopupMode(QToolButton::MenuButtonPopup); //设置成下拉菜单
+     ui->tBtnSelectItem->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+     ui->tBtnSelectItem->setDefaultAction(ui->actSelPopMenu);//关联action
+     ui->tBtnSelectItem->setMenu(menuSelection); //设置菜单  菜单想已经关联好action
+     //工具栏上的 下拉式菜单按钮
+     QToolButton* aBtn = new QToolButton(this);
+     aBtn->setPopupMode(QToolButton::InstantPopup);
+     aBtn->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);//按钮样式
+     aBtn->setMenu(menuSelection);
+     ui->mainToolBar->addWidget(aBtn);
+
+     ui->mainToolBar->addSeparator();
+     ui->mainToolBar->addAction(ui->actQuit);
+ }
 
 //初始化列表
 void MainWindow::on_actListIni_triggered()
@@ -136,5 +160,26 @@ void MainWindow::on_listWidget_currentItemChanged(QListWidgetItem *current, QLis
             str = "前一项:"+previous->text() +";当前项:"+current->text();
         ui->lineEdit->setText(str);
     }
+
+}
+
+//设置listWidget菜单项 右键点击槽函数
+void MainWindow::on_listWidget_customContextMenuRequested(const QPoint &pos)
+{
+    Q_UNUSED(pos)
+    QMenu* menuList = new QMenu(this);
+    menuList->addAction(ui->actListIni);
+    menuList->addAction(ui->actListClear);
+    menuList->addAction(ui->actListInsert);
+    menuList->addAction(ui->actListAppend);
+    menuList->addAction(ui->actListDelete);
+    menuList->addSeparator();
+    menuList->addAction(ui->actSelAll);
+    menuList->addAction(ui->actSelNone);
+    menuList->addAction(ui->actSelInvs);
+
+    //在鼠标位置显示右键菜单
+    menuList->exec(QCursor::pos());
+    delete menuList;
 
 }

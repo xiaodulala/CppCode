@@ -15,7 +15,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 private:
+    //将界面按钮和
     void setActionForButton();
+    void createSelectionPopMenu();
 private slots:
     void on_actSelAll_triggered();
 
@@ -32,6 +34,8 @@ private slots:
     void on_actSelInvs_triggered();
 
     void on_listWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+
+    void on_listWidget_customContextMenuRequested(const QPoint &pos);
 
 private:
     Ui::MainWindow *ui;
