@@ -34,14 +34,4 @@
         <file>icons/Picture_48px_507712_easyicon.net.png</file>
         <file>icons/Pictures_Picture_Folder_48px_515430_easyicon.net.png</file>
     </qresource>
-    <qresource prefix="/imagesPic">
-        <file>pic/qqj_1366x768.jpg</file>
-        <file>pic/ry_1024x768.jpg</file>
-        <file>pic/sl_1280x800.jpg</file>
-        <file>pic/timg (1).jpeg</file>
-        <file>pic/timg (2).jpeg</file>
-        <file>pic/xje_1280x1024.jpg</file>
-        <file>pic/xmy_1280x800.jpg</file>
-        <file>pic/ymy_1280x1024.jpg</file>
-    </qresource>
 </RCC>
