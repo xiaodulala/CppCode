@@ -165,6 +165,7 @@
 		setDefaultAction(action)  设置关联的action
 
 4.7 QTreeWidget和QDockWidget QLabel显示图片的方法
+       查看案列
 	
 	
 	

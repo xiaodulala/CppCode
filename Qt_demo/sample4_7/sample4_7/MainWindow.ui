@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1182</width>
-    <height>753</height>
+    <width>991</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
      <widget class="QScrollArea" name="scrollArea">
       <property name="widgetResizable">
@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1304</width>
-         <height>1048</height>
+         <width>684</width>
+         <height>517</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -35,8 +35,8 @@
           <property name="text">
            <string/>
           </property>
-          <property name="pixmap">
-           <pixmap resource="res.qrc">:/imagesPic/pic/ymy_1280x1024.jpg</pixmap>
+          <property name="wordWrap">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -51,18 +51,35 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1182</width>
+     <width>991</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actAddFloder"/>
+   <addaction name="actAddFiles"/>
+   <addaction name="actDeleteItem"/>
+   <addaction name="actScanItems"/>
+   <addaction name="separator"/>
+   <addaction name="actZoomIn"/>
+   <addaction name="actZoomOut"/>
+   <addaction name="actZoomRealSize"/>
+   <addaction name="actZoomFitW"/>
+   <addaction name="actZoomFith"/>
+   <addaction name="separator"/>
+   <addaction name="actDockFloat"/>
+   <addaction name="actDockVisible"/>
+   <addaction name="actQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockWidget">
@@ -146,8 +163,8 @@
   </widget>
   <action name="actAddFloder">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/folder_48px_42551_easyicon.net.png</normaloff>:/images/icons/folder_48px_42551_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/folder_open_32px_14055_easyicon.net.png</normaloff>:/imagesIcon/icons/folder_open_32px_14055_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>添加目录...</string>
@@ -161,8 +178,8 @@
   </action>
   <action name="actAddFiles">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/document_file_48px_563728_easyicon.net.png</normaloff>:/images/icons/document_file_48px_563728_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/document_file_48px_563728_easyicon.net.png</normaloff>:/imagesIcon/icons/document_file_48px_563728_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>添加文件...</string>
@@ -176,8 +193,8 @@
   </action>
   <action name="actZoomIn">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/Magnifier_zoom_in_49.156626506024px_1198331_easyicon.net.png</normaloff>:/images/icons/Magnifier_zoom_in_49.156626506024px_1198331_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/Magnifier_zoom_in_49.156626506024px_1198331_easyicon.net.png</normaloff>:/imagesIcon/icons/Magnifier_zoom_in_49.156626506024px_1198331_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>放大</string>
@@ -188,8 +205,8 @@
   </action>
   <action name="actZoomOut">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/Magnifier_zoom_out_49.156626506024px_1198332_easyicon.net.png</normaloff>:/images/icons/Magnifier_zoom_out_49.156626506024px_1198332_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/Magnifier_zoom_out_49.156626506024px_1198332_easyicon.net.png</normaloff>:/imagesIcon/icons/Magnifier_zoom_out_49.156626506024px_1198332_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>缩小</string>
@@ -203,8 +220,8 @@
   </action>
   <action name="actZoomRealSize">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/magnify_48.091254752852px_1190644_easyicon.net.png</normaloff>:/images/icons/magnify_48.091254752852px_1190644_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/magnify_48.091254752852px_1190644_easyicon.net.png</normaloff>:/imagesIcon/icons/magnify_48.091254752852px_1190644_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>实际大小</string>
@@ -213,10 +230,10 @@
     <string>实际大小</string>
    </property>
   </action>
-  <action name="action">
+  <action name="actZoomFitW">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/Width_Window_48px_1179015_easyicon.net.png</normaloff>:/images/icons/Width_Window_48px_1179015_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/Width_Window_48px_1179015_easyicon.net.png</normaloff>:/imagesIcon/icons/Width_Window_48px_1179015_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>适合宽度</string>
@@ -230,8 +247,8 @@
   </action>
   <action name="actDeleteItem">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/delete_exit_remove_48px_3590_easyicon.net.png</normaloff>:/images/icons/delete_exit_remove_48px_3590_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/delete_exit_remove_48px_3590_easyicon.net.png</normaloff>:/imagesIcon/icons/delete_exit_remove_48px_3590_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>删除节点</string>
@@ -242,8 +259,8 @@
   </action>
   <action name="actQuit">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</normaloff>:/images/icons/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</normaloff>:/imagesIcon/icons/account_door_exit_logout_39.384615384615px_1211608_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>退出</string>
@@ -254,8 +271,8 @@
   </action>
   <action name="actZoomFith">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/Height_Window_48px_1177939_easyicon.net.png</normaloff>:/images/icons/Height_Window_48px_1177939_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/Height_Window_48px_1177939_easyicon.net.png</normaloff>:/imagesIcon/icons/Height_Window_48px_1177939_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>适合高度</string>
@@ -269,8 +286,8 @@
   </action>
   <action name="actScanItems">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/tool_node_editor_48px_1066386_easyicon.net.png</normaloff>:/images/icons/tool_node_editor_48px_1066386_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/tool_node_editor_48px_1066386_easyicon.net.png</normaloff>:/imagesIcon/icons/tool_node_editor_48px_1066386_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>遍历节点</string>
@@ -284,8 +301,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/magnification_48px_1155062_easyicon.net.png</normaloff>:/images/icons/magnification_48px_1155062_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/magnification_48px_1155062_easyicon.net.png</normaloff>:/imagesIcon/icons/magnification_48px_1155062_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>窗体可见</string>
@@ -299,8 +316,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/icons/gps_location_needle_push_pin_thumbtack_48px_166_easyicon.net.png</normaloff>:/images/icons/gps_location_needle_push_pin_thumbtack_48px_166_easyicon.net.png</iconset>
+    <iconset resource="res.qrc">
+     <normaloff>:/imagesIcon/icons/gps_location_needle_push_pin_thumbtack_48px_166_easyicon.net.png</normaloff>:/imagesIcon/icons/gps_location_needle_push_pin_thumbtack_48px_166_easyicon.net.png</iconset>
    </property>
    <property name="text">
     <string>窗体浮动</string>
@@ -314,5 +331,22 @@
  <resources>
   <include location="res.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
