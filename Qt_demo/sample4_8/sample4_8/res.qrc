@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/imagse/icons">
+        <file>icons/man.png</file>
+        <file>icons/woman.png</file>
+    </qresource>
+</RCC>

@@ -165,8 +165,18 @@
 		setDefaultAction(action)  设置关联的action
 
 4.7 QTreeWidget和QDockWidget QLabel显示图片的方法
-       查看案列
-	
+    查看案列
+	目录树组件 添加删除节点 节点设置类型 设置自定义数据保存文件路径 以便点击显示图片
+	QDockWidget 停靠区域组件
+	QLabel 显示图片	
+
+4.8 QTableWidget的使用
+	设置表格的列数和行数 设置表头的文字格式等
+	初始化表格数据 设置一批梳理数据填充到表格里
+	插入行 添加行 删除当前行
+	遍历表格所有单元格 读取表格内容到一个QPlainTextEdit里 
+	表格上选择的单元格变化时 在状态栏显示单元格存储信息
+
 	
 	
 	
